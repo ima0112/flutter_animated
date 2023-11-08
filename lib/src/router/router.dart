@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animation/src/sample_feature/sample_item_list_view.dart';
 import 'package:go_router/go_router.dart';
+
+import 'package:flutter_animation/src/pages/home_page.dart';
 
 enum MyRoutes { home }
 
@@ -26,7 +27,7 @@ class AppRoute {
       GoRoute(
         path: _home,
         name: MyRoutes.home.name,
-        builder: (context, state) => const SampleItemListView(),
+        builder: (context, state) => const HomePage(),
       ),
     ],
   );
