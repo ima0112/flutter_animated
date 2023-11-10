@@ -37,7 +37,9 @@ class HomePage extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.list_rounded),
             title: const Text('List Parallax'),
-            onTap: () {},
+            onTap: () {
+              context.goNamed(MyRoutes.sample4.name);
+            },
           ),
         ],
       ),

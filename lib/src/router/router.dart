@@ -5,9 +5,10 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_animation/src/pages/home_page.dart';
 
 import '../pages/animated_text/animated_text.dart';
+import '../pages/list_parallax/list_parallax.dart';
 import '../pages/rive_animations/rive_animations.dart';
 
-enum MyRoutes { home, sample1, sample2, sample3 }
+enum MyRoutes { home, sample1, sample2, sample3, sample4 }
 
 class AppRoute {
   static GoRouter get routes => _routes;
@@ -23,6 +24,7 @@ class AppRoute {
   static const String _sample1 = 'sample1';
   static const String _sample2 = 'sample2';
   static const String _sample3 = 'sample3';
+  static const String _sample4 = 'sample4';
 
   static final _routes = GoRouter(
     navigatorKey: _rootNavigatorKey,
@@ -50,6 +52,11 @@ class AppRoute {
             path: _sample3,
             name: MyRoutes.sample3.name,
             builder: (context, state) => const RiveAnimationPage(),
+          ),
+          GoRoute(
+            path: _sample4,
+            name: MyRoutes.sample4.name,
+            builder: (context, state) => const ListParallaxPage(),
           ),
         ],
       ),
