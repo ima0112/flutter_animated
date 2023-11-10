@@ -40,7 +40,8 @@ class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Animated Container'),
+        title: const Text('Animated Container'),
+        centerTitle: true,
       ),
       body: Center(
         child: AnimatedContainer(
