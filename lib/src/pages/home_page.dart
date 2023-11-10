@@ -19,7 +19,14 @@ class HomePage extends StatelessWidget {
             onTap: () {
               context.goNamed(MyRoutes.sample1.name);
             },
-          )
+          ),
+          ListTile(
+            leading: const Icon(Icons.text_fields_rounded),
+            title: const Text('Animated Text'),
+            onTap: () {
+              context.goNamed(MyRoutes.sample2.name);
+            },
+          ),
         ],
       ),
     );

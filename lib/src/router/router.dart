@@ -4,7 +4,9 @@ import 'package:go_router/go_router.dart';
 
 import 'package:flutter_animation/src/pages/home_page.dart';
 
-enum MyRoutes { home, sample1 }
+import '../pages/animated_text/animated_text.dart';
+
+enum MyRoutes { home, sample1, sample2 }
 
 class AppRoute {
   static GoRouter get routes => _routes;
@@ -18,6 +20,7 @@ class AppRoute {
 
   static const String _home = '/home';
   static const String _sample1 = 'sample1';
+  static const String _sample2 = 'sample2';
 
   static final _routes = GoRouter(
     navigatorKey: _rootNavigatorKey,
@@ -35,6 +38,11 @@ class AppRoute {
             path: _sample1,
             name: MyRoutes.sample1.name,
             builder: (context, state) => const AnimatedContainerPage(),
+          ),
+          GoRoute(
+            path: _sample2,
+            name: MyRoutes.sample2.name,
+            builder: (context, state) => const AnimatedTextPage(),
           ),
         ],
       ),
