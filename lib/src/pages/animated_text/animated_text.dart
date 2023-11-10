@@ -24,10 +24,7 @@ class _AnimatedTextPageState extends State<AnimatedTextPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Animated Text'),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: const Text('Animated Text')),
       body: Center(
         child: Container(
           height: 300,

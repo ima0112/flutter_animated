@@ -48,10 +48,7 @@ class _RiveAnimationPageState extends State<RiveAnimationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Rive Animation'),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: const Text('Rive Animation')),
       body: riveArtboard == null
           ? const SizedBox()
           : Padding(
