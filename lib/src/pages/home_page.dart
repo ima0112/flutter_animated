@@ -41,6 +41,13 @@ class HomePage extends StatelessWidget {
               context.goNamed(MyRoutes.sample4.name);
             },
           ),
+          ListTile(
+            leading: const Icon(Icons.celebration_rounded),
+            title: const Text('Confetti Animation'),
+            onTap: () {
+              context.goNamed(MyRoutes.sample5.name);
+            },
+          ),
         ],
       ),
     );
