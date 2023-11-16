@@ -9,10 +9,10 @@ class FlipAnimationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Flipping Card')),
+      appBar: AppBar(title: const Text('Flipping Card')),
       body: Container(
         alignment: Alignment.center,
-        padding: EdgeInsets.all(32),
+        padding: const EdgeInsets.all(32),
         child: FlipCardWidget(
           front: Image.asset(AppAsset.front),
           back: Image.asset(AppAsset.back),
@@ -32,9 +32,37 @@ class FlipCardWidget extends StatefulWidget {
   State<FlipCardWidget> createState() => _FlipCardWidgetState();
 }
 
-class _FlipCardWidgetState extends State<FlipCardWidget> {
+class _FlipCardWidgetState extends State<FlipCardWidget>
+    with SingleTickerProviderStateMixin {
+  late AnimationController controller;
+  late Animation<double> animation;
+
   bool isFront = true;
+  bool isFrontStart = true;
   double dragPosition = 0;
+
+  @override
+  void initState() {
+    controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+
+    controller.addListener(() {
+      setState(() {
+        dragPosition = animation.value;
+        setImageSide();
+      });
+    });
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +72,10 @@ class _FlipCardWidgetState extends State<FlipCardWidget> {
       ..rotateY(angle);
 
     return GestureDetector(
+      onHorizontalDragStart: (details) {
+        controller.stop();
+        isFrontStart = isFront;
+      },
       onHorizontalDragUpdate: (details) {
         setState(() {
           dragPosition -= details.delta.dx;
@@ -51,6 +83,22 @@ class _FlipCardWidgetState extends State<FlipCardWidget> {
 
           setImageSide();
         });
+      },
+      onHorizontalDragEnd: (details) {
+        final velocity = details.velocity.pixelsPerSecond.dx.abs();
+
+        if (velocity >= 100) {
+          isFront = !isFrontStart;
+        }
+
+        final double end = isFront ? (dragPosition > 180 ? 360 : 0) : 180;
+
+        animation = Tween(
+          begin: dragPosition,
+          end: end,
+        ).animate(controller);
+
+        controller.forward(from: 0);
       },
       child: Transform(
         transform: transform,
