@@ -55,6 +55,13 @@ class HomePage extends StatelessWidget {
               context.goNamed(MyRoutes.sample6.name);
             },
           ),
+          ListTile(
+            leading: const Icon(Icons.flip_rounded),
+            title: const Text('Flip Animation'),
+            onTap: () {
+              context.goNamed(MyRoutes.sample7.name);
+            },
+          ),
         ],
       ),
     );
