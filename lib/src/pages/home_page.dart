@@ -48,6 +48,13 @@ class HomePage extends StatelessWidget {
               context.goNamed(MyRoutes.sample5.name);
             },
           ),
+          ListTile(
+            leading: const Icon(Icons.menu_rounded),
+            title: const Text('Animated FAB'),
+            onTap: () {
+              context.goNamed(MyRoutes.sample6.name);
+            },
+          ),
         ],
       ),
     );

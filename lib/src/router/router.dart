@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animation/src/pages/animated_container/animated_container.dart';
+import 'package:flutter_animation/src/pages/animated_fab/animated_fab_page.dart';
 import 'package:flutter_animation/src/pages/confetti_aimation/confetti_animation_page.dart';
 import 'package:go_router/go_router.dart';
 
@@ -9,7 +10,7 @@ import '../pages/animated_text/animated_text.dart';
 import '../pages/list_parallax/list_parallax.dart';
 import '../pages/rive_animations/rive_animations.dart';
 
-enum MyRoutes { home, sample1, sample2, sample3, sample4, sample5 }
+enum MyRoutes { home, sample1, sample2, sample3, sample4, sample5, sample6 }
 
 class AppRoute {
   static GoRouter get routes => _routes;
@@ -27,6 +28,7 @@ class AppRoute {
   static const String _sample3 = 'sample3';
   static const String _sample4 = 'sample4';
   static const String _sample5 = 'sample5';
+  static const String _sample6 = 'sample6';
 
   static final _routes = GoRouter(
     navigatorKey: _rootNavigatorKey,
@@ -64,6 +66,11 @@ class AppRoute {
             path: _sample5,
             name: MyRoutes.sample5.name,
             builder: (context, state) => const ConfettiAnimationPage(),
+          ),
+          GoRoute(
+            path: _sample6,
+            name: MyRoutes.sample6.name,
+            builder: (context, state) => const AnimatedFabPage(),
           ),
         ],
       ),
